@@ -89,13 +89,13 @@ macro_rules! impl_frame_system {
             type DbWeight = ();
             type Version = ();
             type PalletInfo = ();
+            type BlockWeights = ();
+            type BlockLength = ();
+            type SS58Prefix = ();
             type AccountData = balances::AccountData<u64>;
             type OnNewAccount = ();
             type OnKilledAccount = ();
             type SystemWeightInfo = ();
-            type BlockWeights = ();
-            type BlockLength = ();
-            type SS58Prefix = ();   
         }
     };
 }

@@ -19,7 +19,7 @@
 //extern crate node_primitives;
 
 use super::*;
-use crate::{GenesisConfig, Module, Config};
+use crate::{Config, GenesisConfig, Module};
 use encointer_primitives::{
     communities::{CommunityIdentifier, Degree, Location, LossyInto},
     scheduler::{CeremonyIndexType, CeremonyPhaseType},
