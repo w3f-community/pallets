@@ -10,13 +10,13 @@ edition = "2018"
 default-features = false
 package = "sp-std"
 git = "https://github.com/paritytech/substrate.git" 
-branch = "master"
+branch = "rococo-v1"
 
 [dependencies.codec]
 default-features = false
 package = "parity-scale-codec"
 features = ["derive"]
-version = "1.3.0"
+version = "1.3.6"
 
 [dependencies.encointer-communities]
 default-features = false
@@ -32,19 +32,19 @@ path = "../primitives"
 default-features = false
 package = "sp-io"
 git = "https://github.com/paritytech/substrate.git" 
-branch = "master"
+branch = "rococo-v1"
 
 [dependencies.frame-support]
 default-features = false
 package = "frame-support"
 git = "https://github.com/paritytech/substrate.git" 
-branch = "master"
+branch = "rococo-v1"
 
 [dependencies.frame-system]
 default-features = false
 package = "frame-system"
 git = "https://github.com/paritytech/substrate.git" 
-branch = "master"
+branch = "rococo-v1"
 
 [dev-dependencies]
 approx = "0.3.0"
@@ -53,7 +53,7 @@ tempdir = "0.3.7"
 [dev-dependencies.externalities]
 package = "sp-externalities"
 git = "https://github.com/paritytech/substrate.git" 
-branch = "master"
+branch = "rococo-v1"
 
 [dev-dependencies.fixed]
 git = "https://github.com/encointer/substrate-fixed"
@@ -63,22 +63,22 @@ package = "substrate-fixed"
 [dev-dependencies.sp-keyring]
 package = "sp-keyring"
 git = "https://github.com/paritytech/substrate.git" 
-branch = "master"
+branch = "rococo-v1"
 
 [dev-dependencies.balances]
 package = "pallet-balances"
 git = "https://github.com/paritytech/substrate.git" 
-branch = "master"
+branch = "rococo-v1"
 
 [dev-dependencies.sp-core]
 package = "sp-core"
 git = "https://github.com/paritytech/substrate.git" 
-branch = "master"
+branch = "rococo-v1"
 
 [dev-dependencies.sp-runtime]
 package = "sp-runtime"
 git = "https://github.com/paritytech/substrate.git" 
-branch = "master"
+branch = "rococo-v1"
 
 [dev-dependencies.encointer-balances]
 path = "../balances"

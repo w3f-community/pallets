@@ -17,7 +17,7 @@
 //! Unit tests for the tokens module.
 
 use super::*;
-use crate::{Module, Config};
+use crate::{Config, Module};
 use codec::Encode;
 use encointer_primitives::communities::{CommunityIdentifier, Degree, Location};
 use frame_support::assert_ok;

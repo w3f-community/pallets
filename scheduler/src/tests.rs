@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Encointer.  If not, see <http://www.gnu.org/licenses/>.
 
-use crate::{CeremonyPhaseType, GenesisConfig, Module, Config};
+use crate::{CeremonyPhaseType, Config, GenesisConfig, Module};
 use frame_support::traits::UnfilteredDispatchable;
 use frame_support::{
     assert_ok, impl_outer_event,
