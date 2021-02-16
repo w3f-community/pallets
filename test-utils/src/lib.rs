@@ -224,7 +224,7 @@ pub type LocationConverter = SiblingParachainConvertsVia<Sibling, AccountId>;
 ///
 /// Example: https://github.com/paritytech/polkadot/pull/2409/files
 ///
-/// Tracking Issue:
+/// Tracking Issue: https://github.com/encointer/pallets/issues/25
 impl PalletInfo for Info {
     fn index<P: 'static>() -> Option<usize> {
         Some(0)
