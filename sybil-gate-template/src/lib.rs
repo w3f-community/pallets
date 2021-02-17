@@ -169,7 +169,7 @@ decl_module! {
                 Self::deposit_event(RawEvent::FaucetRejectedDueToWeakPersonhoodUniquenessRating(account));
                 return Err(<Error<T>>::PersonhoodUniquenessRatingTooWeak)?;
             } else {
-                T::Currency::deposit_creating(&account, 1u32.into());
+                T::Currency::deposit_creating(&account, 10u128.pow(12).checked_into().unwrap());
                 rating.proofs().into_iter().for_each( |p|
                     BurnedProofs::insert(SybilResponse::Faucet, p, ())
                );
