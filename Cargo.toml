@@ -8,5 +8,6 @@ members = [
     'sybil-gate-template',
     'personhood-oracle',
     'primitives',
-    'test-utils'
+    'test-utils',
+    'xc-transfer'
 ]

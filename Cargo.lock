@@ -1318,6 +1318,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-encointer-xc-transfer"
+version = "0.3.9"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "polkadot-parachain",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+ "xcm",
+ "xcm-executor",
+]
+
+[[package]]
 name = "pallet-timestamp"
 version = "2.0.1"
 source = "git+https://github.com/paritytech/substrate.git?branch=master#38f723bf5dae257220fc25d4e86759f4a664d50f"
