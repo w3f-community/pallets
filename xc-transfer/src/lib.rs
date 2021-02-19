@@ -33,9 +33,7 @@ use frame_system::ensure_signed;
 use polkadot_parachain::primitives::Id as ParaId;
 use rstd::prelude::*;
 use rstd::vec;
-use sp_runtime::traits::{
-    AtLeast32BitUnsigned, Convert, MaybeSerializeDeserialize, Member, StaticLookup,
-};
+use sp_runtime::traits::{AtLeast32BitUnsigned, MaybeSerializeDeserialize, Member, StaticLookup};
 use xcm::v0::{
     Error as XcmError, ExecuteXcm, Junction, MultiAsset, MultiLocation, NetworkId, Order, Xcm,
 };
@@ -45,6 +43,11 @@ const LOG: &str = "encointer";
 
 pub trait Config: frame_system::Config {
     type Event: From<Event<Self>> + Into<<Self as frame_system::Config>::Event>;
+    type AccountId32: Into<[u8; 32]>
+        + From<[u8; 32]>
+        + Clone
+        + From<<Self as frame_system::Config>::AccountId>
+        + Into<<Self as frame_system::Config>::AccountId>;
     type Balance: Parameter
         + Member
         + AtLeast32BitUnsigned
@@ -54,7 +57,6 @@ pub trait Config: frame_system::Config {
         + Into<u128>;
     type XcmExecutor: ExecuteXcm;
     type AccountIdConverter: LocationConversion<Self::AccountId>;
-    type AccountId32Converter: Convert<Self::AccountId, [u8; 32]>;
     type RelayChainNetworkId: Get<NetworkId>;
     type ParaId: Get<ParaId>;
 }
@@ -86,7 +88,7 @@ decl_module! {
 
             let recipient = T::Lookup::lookup(recipient)?;
 
-            let xcm = Self::make_xcm_upward_transfer(&recipient, amount);
+            let xcm = Self::make_xcm_upward_transfer(recipient.clone().into(), amount);
             debug::debug!(target: LOG, "executing upward transfer: {:?}", xcm);
 
             let xcm_origin = T::AccountIdConverter::try_into_location(sender.clone())
@@ -117,7 +119,7 @@ decl_error! {
 
 impl<T: Config> Module<T> {
     // Transfer DOT upwards to relay chain
-    fn make_xcm_upward_transfer(recipient: &T::AccountId, amount: T::Balance) -> Xcm {
+    fn make_xcm_upward_transfer(recipient: T::AccountId32, amount: T::Balance) -> Xcm {
         Xcm::WithdrawAsset {
             assets: vec![MultiAsset::ConcreteFungible {
                 id: MultiLocation::X1(Junction::Parent),
@@ -130,7 +132,7 @@ impl<T: Config> Module<T> {
                     assets: vec![MultiAsset::All],
                     dest: MultiLocation::X1(Junction::AccountId32 {
                         network: T::RelayChainNetworkId::get(),
-                        id: T::AccountId32Converter::convert(recipient.clone()),
+                        id: recipient.clone().into(),
                     }),
                 }],
             }],
